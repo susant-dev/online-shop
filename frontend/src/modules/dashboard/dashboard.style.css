@@ -1,0 +1,14 @@
+header {
+  display: flex;
+  background-color: var(--secondary);
+  color: white;
+  padding: 30px 20px;
+}
+
+header .title {
+  flex: 1;
+  font-size: 1.4em;
+  font-weight: 400;
+  margin: 0;
+  align-content: center;
+}
