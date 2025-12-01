@@ -13,9 +13,6 @@ const MongoStore = require("connect-mongo");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-const port = process.env.PORT || 3000;
-const hostname = "0.0.0.0";
-
 const server = express();
 
 server.use(cors({ credentials: true }));
@@ -77,6 +74,9 @@ server.use((error, req, res, next) => {
 server.use((req, res, next) => {
   res.status(404).send(`404! ${req.method} ${req.path} Not Found.`);
 });
+
+const port = process.env.PORT || 3000;
+const hostname = "0.0.0.0";
 
 server.listen(port, hostname, (error) => {
   if (error) console.log(error.message);
