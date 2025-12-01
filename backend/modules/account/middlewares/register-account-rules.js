@@ -1,7 +1,7 @@
 const { body } = require("express-validator");
 const checkValidation = require("../../../shared/middlewares/check-validation");
 
-const createCustomerRules = [
+const registerAccountRules = [
   body("name")
     .optional()
     .isString()
@@ -15,9 +15,16 @@ const createCustomerRules = [
     .withMessage("Email must be a valid email address")
     .normalizeEmail(),
 
-  body("phone")
+  body("password")
     .notEmpty()
-    .withMessage("Phone number is required")
+    .withMessage("Password is required")
+    .isLength({ min: 8 })
+    .withMessage("Password must be at least 8 characters long")
+    .matches(/\d/)
+    .withMessage("Password must contain at least one number"),
+
+  body("phone")
+    .optional()
     .matches(/^\d{3}-\d{3}-\d{4}$/)
     .withMessage("Phone number must be in the format XXX-XXX-XXXX"),
 
@@ -30,4 +37,4 @@ const createCustomerRules = [
   checkValidation,
 ];
 
-module.exports = createCustomerRules;
+module.exports = registerAccountRules;

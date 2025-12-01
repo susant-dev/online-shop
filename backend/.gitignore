@@ -1,4 +1,5 @@
 .env
+.google-secret.json
 
 # Logs
 logs

@@ -1,7 +1,24 @@
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import "./home.style.css";
-import { Link } from "react-router-dom";
 
 function HomePage() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const [params] = useSearchParams();
+
+  useEffect(() => {
+    const user = params.get("user");
+    const token = params.get("token");
+    if (!token || !user) {
+      setLoggedIn(false);
+    } else {
+      console.log(token);
+      console.log(JSON.parse(user));
+      setLoggedIn(true);
+    }
+  }, [params]);
+
   return (
     <main>
       <h1>Welcome to Dummy Online Shop!</h1>
@@ -23,6 +40,12 @@ function HomePage() {
         <Link to="/products" className="link">
           View All Products
         </Link>
+      </p>
+
+      <p style={{ display: loggedIn ? "none" : "block" }}>
+        <a href="http://localhost:3000/accounts/login/google">
+          Login with Google
+        </a>
       </p>
     </main>
   );

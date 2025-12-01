@@ -27,18 +27,24 @@
  */
 const mongoose = require("mongoose");
 
-const CartProductSchema = new mongoose.Schema({
-  item: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
-  qty: { type: Number, min: 0, default: 0 },
-  price: { type: Number, min: 0, default: 0 },
-});
+const CartProductSchema = new mongoose.Schema(
+  {
+    item: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+    qty: { type: Number, min: 0, default: 0 },
+    price: { type: Number, min: 0, default: 0 },
+  },
+  { versionKey: false }
+);
 
-const CartSchema = new mongoose.Schema({
-  products: { type: [CartProductSchema], default: [] },
-  subtotal: { type: Number, min: 0, default: 0 },
-  hst: { type: Number, min: 0, default: 0 },
-  total: { type: Number, min: 0, default: 0 },
-});
+const CartSchema = new mongoose.Schema(
+  {
+    products: { type: [CartProductSchema], default: [] },
+    subtotal: { type: Number, min: 0, default: 0 },
+    hst: { type: Number, min: 0, default: 0 },
+    total: { type: Number, min: 0, default: 0 },
+  },
+  { versionKey: false }
+);
 
 CartSchema.pre("save", async function (next) {
   this.subtotal = this.products.reduce((a, c) => (a = a + c.price), 0);
