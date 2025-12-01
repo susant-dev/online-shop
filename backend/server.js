@@ -13,8 +13,8 @@ const MongoStore = require("connect-mongo");
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-const port = 3000;
-const hostname = "localhost";
+const port = process.env.PORT || 3000;
+const hostname = "0.0.0.0";
 
 const server = express();
 
