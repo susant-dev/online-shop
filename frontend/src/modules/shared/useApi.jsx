@@ -35,7 +35,14 @@ function apiReducer(state, action) {
   }
 }
 
-function useApi(url, options = {}, { auto = true } = {}) {
+function useApi(
+  route,
+  options = {},
+  {
+    auto = true,
+    baseurl = import.meta.env.BACKEND_API_URL || "http://localhost:3000",
+  } = {}
+) {
   const [state, dispatch] = useReducer(apiReducer, initialState);
 
   const fetchApi = useCallback(
@@ -45,7 +52,7 @@ function useApi(url, options = {}, { auto = true } = {}) {
       if (overrideBody) body = JSON.stringify(overrideBody);
       if (options.body) body = JSON.stringify(options.body);
       try {
-        const res = await fetch(url, {
+        const res = await fetch(baseurl + route, {
           ...options,
           body,
         });

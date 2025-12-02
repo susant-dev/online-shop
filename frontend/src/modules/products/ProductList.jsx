@@ -2,7 +2,7 @@ import useApi from "../shared/useApi";
 import ProductItem from "./ProductItem";
 
 function ProductList() {
-  const { loading, data, error } = useApi("http://localhost:3000/products", {
+  const { loading, data, error } = useApi("/products", {
     method: "GET",
   });
 

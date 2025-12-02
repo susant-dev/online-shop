@@ -43,9 +43,7 @@ function HomePage() {
       </p>
 
       <p style={{ display: loggedIn ? "none" : "block" }}>
-        <a href="http://localhost:3000/accounts/login/google">
-          Login with Google
-        </a>
+        <a href="/accounts/login/google">Login with Google</a>
       </p>
     </main>
   );

@@ -15,7 +15,7 @@ function AddProductForm() {
   });
 
   const { loading, data, error, formError, refetch } = useApi(
-    "http://localhost:3000/products",
+    "/products",
     {
       method: "POST",
       headers: {
