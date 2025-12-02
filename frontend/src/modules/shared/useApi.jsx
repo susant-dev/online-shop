@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useReducer } from "react";
-// update
+
 const initialState = {
   loading: false,
   data: null,
@@ -40,7 +40,7 @@ function useApi(
   options = {},
   {
     auto = true,
-    baseurl = import.meta.env.BACKEND_API_URL || "http://localhost:3000",
+    baseurl = import.meta.env.VITE_BACKEND_API_URL || "http://localhost:3000",
   } = {}
 ) {
   const [state, dispatch] = useReducer(apiReducer, initialState);
