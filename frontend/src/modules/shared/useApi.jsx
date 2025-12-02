@@ -70,7 +70,7 @@ function useApi(
         dispatch({ type: "NETWORK_ERROR", payload: err.message });
       }
     },
-    [url, options]
+    [route, options]
   );
 
   useEffect(() => {
